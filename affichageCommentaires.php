@@ -53,7 +53,8 @@
                 <p/>
                 <p/>
                 <h4>Laisse un commentaire à cet article :</h4>
-                <form method="post" action="commentaires_post.php?billet=<?php echo $numarticle; ?>">
+    <?php $numarticle = (int)$_GET['billet']; ?>            
+    <form method="post" action="commentaires_post.php?billet=<?php echo $numarticle; ?>">
                     <table>
                         <tr>
                             <td>Pseudonyme :</td>
