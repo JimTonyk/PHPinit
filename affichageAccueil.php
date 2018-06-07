@@ -21,7 +21,7 @@
         <p>
             <?= htmlspecialchars($article['article']) ?>
         </p> <br>
-        <a href="commentaires.php?billet=<?= $article['id'] ?>">Commentaires</a>
+        <a href="post.php?billet=<?= $article['id'] ?>">Commentaires</a>
         <?php
     }
     

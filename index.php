@@ -13,6 +13,4 @@ $nbPages = getNbPages();
 
 
 require('affichageAccueil.php');
-
-
-  
+require('post.php');
