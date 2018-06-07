@@ -8,11 +8,11 @@
 <?php
 require('modeleBillets.php');
 
-$affichage = getBillets();
+$display = getBillets();
 $nbPages = getNbPages();
 
 
 require('affichageAccueil.php');
-?>
+
 
   

@@ -13,27 +13,27 @@
     <h1>Bienvenue sur le blog d'un apprenti</h1>
     <h3>Les dernières nouvelles</h3>
     <?php
-    while($billet = $affichage->fetch()){
+    while($article = $display->fetch()){
     ?>
         <h3>
-            <?php echo $billet['titre'].' publié le '. $billet['date_billet']; ?>
+            <?= $article['titre'].' publié le '. $article['date_billet'] ?>
         </h3>
         <p>
-            <?php echo htmlspecialchars($billet['article']); ?>
+            <?= htmlspecialchars($article['article']) ?>
         </p> <br>
-        <a href="commentaires.php?billet=<?php echo $billet['id']; ?>">Commentaires</a>
+        <a href="commentaires.php?billet=<?= $article['id'] ?>">Commentaires</a>
         <?php
     }
     
     //Ne jamais oublier de fermer les ressources
-    $affichage -> closeCursor();
+    $display -> closeCursor();
     ?>
             <!-- Affiche le nombre de pages de commentaires à afficher (par convention, une page affiche 5 articles) -->
             <p>Page :
-                <?php for($boucle = 0; $boucle<= $nbPages; $boucle++){
+                <?php for($looper = 0; $looper<= $nbPages; $looper++){
                         ?>
-                <a href="index.php?page=<?php echo $boucle+1; ?>">
-                    <?php echo $boucle+1; ?>
+                <a href="index.php?page=<?= $looper+1 ?>">
+                    <?= $looper+1 ?>
                 </a>
                 <?php
         }

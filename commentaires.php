@@ -6,6 +6,3 @@ $affichage = getArticle();
 $listeCommentaires = getCommnetaires();
 
 require('affichageCommentaires.php');
-
-?>
-

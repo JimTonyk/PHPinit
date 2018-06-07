@@ -27,6 +27,3 @@ function getCommnetaires(){
     $listeCommentaires->execute(array($numarticle));
     return $listeCommentaires;
 }
-
-
-?>
