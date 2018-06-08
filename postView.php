@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon blog</title>
-        <link href="style.css" rel="stylesheet" /> 
-    </head>       
+    
+    <?php $title='Commentaires liés à l\'article';
+          ob_start();  ?>
 
     <body>
         <h1>Bienvenue sur le blog d'un apprenti</h1>
@@ -30,5 +28,8 @@
         <?php
         }
         ?>
+        
+        <?php $content = ob_get_clean();
+              require('template.php'); ?> 
     </body>
 </html>

@@ -2,12 +2,10 @@
 <!DOCTYPE html>
 
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <title>Bienvenue sur un blog prototype</title>
-    <link href="style.css" rel="stylesheet">
-</head>
+<!-- Le contenu de la balide head est factorisé dans le fichier template 
+     Du coup on ne rappelle que le titre et on débute une mise en mémoire -->
+<?php $title='Bienvenue sur un blog prototype !';
+      ob_start(); ?>
 
 <body>
     <h1>Bienvenue sur le blog d'un apprenti</h1>
@@ -39,6 +37,8 @@
         }
         ?>
             </p>
+    <?php $content = ob_get_clean();
+          require('template.php'); ?>
 </body>
 
 </html>
