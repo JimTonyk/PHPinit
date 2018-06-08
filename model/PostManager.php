@@ -1,5 +1,7 @@
 <?php
-class PostManager{
+require_once('Manager.php');
+
+class PostManager extends Manager{
     
     public function getBillets(){
         $db = $this -> init();
@@ -29,8 +31,4 @@ class PostManager{
         return $count['nb_billets']/5;
     }
     
-    private function init(){
-        $db = new PDO('mysql:host=localhost;dbname=miniblog;charset=utf8', 'root', '');
-        return $db;
-    }
 }

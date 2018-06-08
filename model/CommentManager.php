@@ -1,5 +1,7 @@
 <?php
-class CommentManager{
+require_once('Manager.php');
+
+class CommentManager extends Manager{
     public function getComments($id){
         $db = $this -> init();
     
@@ -16,8 +18,4 @@ class CommentManager{
         return $addComment;
     }
     
-    private function init(){
-        $db = new PDO('mysql:host=localhost;dbname=miniblog;charset=utf8', 'root', '');
-        return $db;
-    }
 }
