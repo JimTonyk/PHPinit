@@ -6,6 +6,7 @@
 */ -->
 
 <?php
+
 require('\controller\frontend.php');
 
 /**Verify if an action is performed and execute it if designed in global controller

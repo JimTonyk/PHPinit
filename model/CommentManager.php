@@ -1,4 +1,6 @@
 <?php
+namespace org\formation\php\model;
+
 require_once('Manager.php');
 
 class CommentManager extends Manager{

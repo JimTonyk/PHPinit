@@ -5,7 +5,7 @@ require_once('model\CommentManager.php');
 
 //Controller displaying all posts group by 5-pack
 function listBillets() {
-    $postManager = new PostManager();
+    $postManager = new \org\formation\php\model\PostManager();
     
     $display = $postManager -> getBillets();
     $nbPages = $postManager -> getNbPages();
@@ -15,8 +15,8 @@ function listBillets() {
 
 //Controller that assumes displaying one post and its comments
 function post() {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
+    $postManager = new \org\formation\php\model\PostManager();
+    $commentManager = new \org\formation\php\model\CommentManager();
     
     $post = $postManager -> getBillet($_GET['billet']);
     $comments = $commentManager -> getComments($_GET['billet']);
@@ -26,7 +26,7 @@ function post() {
 
 //Controller able to post comments on each post
 function addComment($billet ,$author, $comment) {
-    $commentManager = new CommentManager();
+    $commentManager = new \org\formation\php\model\CommentManager();
     
     $postComment = $commentManager -> postComment($billet, $author, $comment);
     
