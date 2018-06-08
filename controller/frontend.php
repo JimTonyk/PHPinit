@@ -23,7 +23,7 @@ function addComment($billet ,$author, $comment) {
     $postComment = postComment($billet, $author, $comment);
     
     if($postComment === false) {
-        die('Le commentaire n\'a pas été ajouté. Essayez plus tard.');
+        throw new Exception('Le commentaire n\'a pas été ajouté. Essayez plus tard.');
     }
     else {
         header('Location: index.php?action=post&billet='.$billet);

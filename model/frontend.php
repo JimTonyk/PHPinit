@@ -2,12 +2,7 @@
 //Ce fichier sert à faire l'affichage des billets et générer le nombre de pages
 //Accès à la base de données et factorisation pour ne l'appeler qu'une seule fois dans tout le programme
 function init(){
-    try{
-        $db = new PDO('mysql:host=localhost;dbname=miniblog;charset=utf8', 'root', '');
-    }
-    catch(Exception $e){
-        die('Error detected:'. $e.getMessage());   
-    }
+    $db = new PDO('mysql:host=localhost;dbname=miniblog;charset=utf8', 'root', '');
     return $db;
 } 
 
