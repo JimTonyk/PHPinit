@@ -6,11 +6,11 @@
 */ -->
 
 <?php
-require('\controller\controller.php');
+require('\controller\frontend.php');
 
 /**Verify if an action is performed and execute it if designed in global controller
  * Else display an error that action is not present in our server
- * At beginning of this blog, assuming that all post are displayed
+ * At beginning of this blog, assuming that all posts are displayed
  */
 
 if (isset($_GET['action'])) {
@@ -19,11 +19,28 @@ if (isset($_GET['action'])) {
     }
     
     elseif ($_GET['action'] == 'post') {
-        post();
+        if (isset($_GET['billet']) AND $_GET['billet']>0) {
+            post();
+        }
+         else {
+            echo 'Erreur: aucun billet avec cette référence existe sur ce site';
+        }
     }
-    else {
-        echo 'Erreur: cette opération n\'est pas disponible';
+    
+    elseif ($_GET['action'] == 'addComment') {
+        if (isset($_GET['billet']) AND $_GET['billet']>0) {
+            if (!empty($_POST['author']) and !empty($_POST['comment'])) {
+                addComment($_GET['billet'],$_POST['author'],$_POST['comment']);
+            }
+            else {
+                echo 'Erreur : Tous les champs de commentaires ne sont pas remplis. Vérifiez.';
+            }
+        }
+        else {
+            echo 'Erreur: aucun billet avec cette référence existe sur ce site';
+        } 
     }
+   
 }
 
 else {
