@@ -19,7 +19,7 @@
         <p>
             <?= htmlspecialchars($article['article']) ?>
         </p> <br>
-        <a href="post.php?billet=<?= $article['id'] ?>">Commentaires</a>
+        <a href="index.php?action=post&billet=<?= $article['id'] ?>">Commentaires</a>
         <?php
     }
     
@@ -30,7 +30,7 @@
             <p>Page :
                 <?php for($looper = 0; $looper<= $nbPages; $looper++){
                         ?>
-                <a href="index.php?page=<?= $looper+1 ?>">
+                <a href="index.php?action=listBillets&page=<?= $looper+1 ?>">
                     <?= $looper+1 ?>
                 </a>
                 <?php
@@ -38,7 +38,7 @@
         ?>
             </p>
     <?php $content = ob_get_clean();
-          require('template.php'); ?>
+          require'template.php'; ?>
 </body>
 
 </html>

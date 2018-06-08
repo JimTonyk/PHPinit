@@ -6,7 +6,7 @@
 */ -->
 
 <?php
-require('controller.php');
+require('\controller\controller.php');
 
 /**Verify if an action is performed and execute it if designed in global controller
  * Else display an error that action is not present in our server
