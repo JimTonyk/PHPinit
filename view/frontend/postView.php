@@ -9,11 +9,11 @@
     <p><a href="index.php">Retour à la liste des billets</a></p>
     <div class="news">
         <h3>
-            <?= htmlspecialchars($post['titre']) ?>
+            <?= htmlspecialchars($post['title']) ?>
         </h3>
 
         <p>
-            <?= nl2br(htmlspecialchars($post['article'])) ?>
+            <?= nl2br(htmlspecialchars($post['post'])) ?>
         </p>
     </div>
 
@@ -23,11 +23,11 @@
         while ($comment = $comments->fetch())
         {
         ?>
-        <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le
-            <?= $comment['datecom'] ?> (<a href="index.php?action=comment&idcom=<?= $comment['id'] ?>">modifier</a>)
+        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le
+            <?= $comment['datecom'] ?> (<a href="index.php?action=comment&idcom=<?= $comment['id_com'] ?>">modifier</a>)
         </p>
         <p>
-            <?= nl2br(htmlspecialchars($comment['commentaire'])) ?>
+            <?= nl2br(htmlspecialchars($comment['comment'])) ?>
         </p>
         <?php
         }

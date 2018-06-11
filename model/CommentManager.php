@@ -13,7 +13,7 @@ class CommentManager extends Manager{
     public function getComments($id){
         $db = $this -> init();
     
-        $comments = $db -> prepare('Select id, pseudo, commentaire, date_format(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') as datecom from commentaires where id_article = ? order by datecom desc') or die(print_r($db->errorInfo()));
+        $comments = $db -> prepare('Select id_com, author, comment, date_format(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') as datecom from comments where id_article = ? order by datecom desc') or die(print_r($db->errorInfo()));
         $comments -> execute(array($id));
         
         return $comments;
@@ -22,7 +22,7 @@ class CommentManager extends Manager{
     public function getComment($idComment){
         $db = $this -> init();
         
-        $request = $db -> prepare('SELECT pseudo, commentaire FROM commentaires WHERE id = ?') or die(print_r($db->errorInfo()));
+        $request = $db -> prepare('SELECT author, comment FROM comments WHERE id_com = ?') or die(print_r($db->errorInfo()));
         $request -> execute(array($idComment));
         
         return $request;
@@ -40,7 +40,7 @@ class CommentManager extends Manager{
     public function postComment($billet, $author, $comment){
         $db= $this -> init();
         
-        $newComment = $db -> prepare('INSERT into commentaires(id_article, pseudo, commentaire, date_commentaire) values (?, ?, ?, now())') or die(print_r($db->errorInfo()));
+        $newComment = $db -> prepare('INSERT into comments(id_article, author, comment, date_comment) values (?, ?, ?, now())') or die(print_r($db->errorInfo()));
         $addComment = $newComment -> execute(array($billet ,$author, $comment));
         
         return $addComment;
@@ -57,8 +57,7 @@ class CommentManager extends Manager{
     public function updateComment($comment, $id){
         $db = $this -> init();
         
-        echo 'test model';
-        $updateComment = $db -> prepare('UPDATE commentaires SET commentaire = ? WHERE commentaires.id = ?') or die(print_r($db->errorInfo()));
+        $updateComment = $db -> prepare('UPDATE comments SET comment = ?, date_comment=now() WHERE comments.id_com = ?') or die(print_r($db->errorInfo()));
         $updatedComment = $updateComment -> execute(array($comment, $id));
         return $updatedComment;
     }

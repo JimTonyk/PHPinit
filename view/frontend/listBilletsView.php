@@ -14,10 +14,10 @@
     while($article = $display->fetch()){
     ?>
         <h3>
-            <?= $article['titre'].' publié le '. $article['date_billet'] ?>
+            <?= $article['title'].' publié le '. $article['date_post'] ?>
         </h3>
         <p>
-            <?= htmlspecialchars($article['article']) ?>
+            <?= htmlspecialchars($article['post']) ?>
         </p> <br>
         <a href="index.php?action=post&billet=<?= $article['id'] ?>">Commentaires</a>
         <?php

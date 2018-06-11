@@ -12,11 +12,11 @@
     <div class="news">
         <h3>
             <?php $commentaire = $comment->fetch();
-             echo htmlspecialchars($commentaire['pseudo']); ?>
+             echo htmlspecialchars($commentaire['author']); ?>
         </h3>
 
         <p>
-            <?= htmlspecialchars($commentaire['commentaire']) ?>
+            <?= htmlspecialchars($commentaire['comment']) ?>
         </p>
     </div>
 
@@ -26,7 +26,7 @@
     <form action="index.php?action=updateComment&idcom=<?= $_GET['idcom'] ?>" method="post">
         <div>
             <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="author" value="<?= $commentaire['pseudo'] ?>" disabled/>
+            <input type="text" id="author" name="author" value="<?= $commentaire['author'] ?>" disabled/>
         </div>
         <div>
             <label for="Ucomment">Commentaire</label><br />

@@ -8,10 +8,10 @@ class PostManager extends Manager{
     public function getBillets(){
         $db = $this -> init();
         if(isset($_GET['page'])){
-            $display = $db->query('Select * from billets order by id asc limit '.(($_GET['page']-1)*5).',5') or die(print_r($db->errorInfo()));
+            $display = $db->query('Select * from posts order by id asc limit '.(($_GET['page']-1)*5).',5') or die(print_r($db->errorInfo()));
         }
         else{
-            $display = $db->query('Select * from billets order by id asc limit 0,5');
+            $display = $db->query('Select * from posts order by id asc limit 0,5');
         }
         return $display;
     }
@@ -19,7 +19,7 @@ class PostManager extends Manager{
     public function getBillet($id){
     $db = $this -> init();
     
-    $request = $db -> prepare('SELECT * from billets where id = ?') or die(print_r($db->errorInfo()));
+    $request = $db -> prepare('SELECT * from posts where id = ?') or die(print_r($db->errorInfo()));
     $request -> execute(array($id));
     $billet = $request -> fetch();
     return $billet;
@@ -28,9 +28,9 @@ class PostManager extends Manager{
     public function getNbPages(){
         $db = $this -> init();
     
-        $selectCount = $db ->query('Select COUNT(*) as nb_billets from billets') or die(print_r($db->errorInfo()));
+        $selectCount = $db ->query('Select COUNT(*) as nb_posts from posts') or die(print_r($db->errorInfo()));
         $count = $selectCount->fetch();
-        return $count['nb_billets']/5;
+        return $count['nb_posts']/5;
     }
     
 }
