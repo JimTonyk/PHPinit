@@ -13,6 +13,15 @@ function listBillets() {
     require('view\frontend\listBilletsView.php');
 }
 
+function getComment($id){
+    $postManager = new \org\formation\php\model\PostManager();
+    $commentManager = new \org\formation\php\model\CommentManager();
+    
+    $comment = $commentManager -> getComment($_GET['idcom']);
+    
+    require('view\frontend\commentView.php');
+}
+
 //Controller that assumes displaying one post and its comments
 function post() {
     $postManager = new \org\formation\php\model\PostManager();
@@ -37,3 +46,17 @@ function addComment($billet ,$author, $comment) {
         header('Location: index.php?action=post&billet='.$billet);
     }
 }
+
+function updateComment($comment, $id){
+    $commentManager = new \org\formation\php\model\CommentManager();
+    //$actualComment = $commentManager -> getComment($_GET['idcom']);
+    
+    $updateComment = $commentManager -> updateComment($comment, $_GET['idcom']);
+    if($updateComment === false) {
+        throw new Exception('Le commentaire n\'a pas été modifié. Essayez plus tard.');
+    }
+    else {
+        header('Location: index.php?action=comment&idcom='.$_GET['idcom']);
+    }
+}
+

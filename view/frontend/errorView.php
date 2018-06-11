@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-<!-- If any error is catch during process, display this error in an dadicated page -->
+<!-- If any error is catch during process, display this error in an dedicated page -->
 <?php $title='Erreur rencontrée';
       ob_start(); ?>
 <body>   

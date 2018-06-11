@@ -24,7 +24,7 @@
         {
         ?>
         <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le
-            <?= $comment['datecom'] ?>
+            <?= $comment['datecom'] ?> (<a href="index.php?action=comment&idcom=<?= $comment['id'] ?>">modifier</a>)
         </p>
         <p>
             <?= nl2br(htmlspecialchars($comment['commentaire'])) ?>
