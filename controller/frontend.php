@@ -3,7 +3,12 @@
 require_once('model\PostManager.php');
 require_once('model\CommentManager.php');
 
-//Controller displaying all posts group by 5-pack
+/**
+ * Global controller for managing blog application with diplaying posts, comments and updating comments
+ * TODO: Add an administrator mode for realizing CRUD operation on posts
+ * 
+ * @author JM. Hiltbrunner 
+ */
 function listBillets() {
     $postManager = new \org\formation\php\model\PostManager();
     

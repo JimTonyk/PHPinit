@@ -3,8 +3,20 @@ namespace org\formation\php\model;
 
 require_once('Manager.php');
 
+/**
+ * This class allow read operations on posts published by author in order to being read by users
+ * Another model class will be published for CRUD Operations in posts
+ * 
+ * @author JM. Hiltbrunner
+ */
 class PostManager extends Manager{
     
+    /**
+     * Get 5 posts published by admin sorted by date and their id.
+     * TODO: change publication date as an European format
+     *
+     * @return Array of 5 posts maximum with title, post content and publication date
+     */
     public function getBillets(){
         $db = $this -> init();
         if(isset($_GET['page'])){
@@ -16,6 +28,12 @@ class PostManager extends Manager{
         return $display;
     }
     
+    /**
+     * Get a post selected by its identification number.
+     * TODO: change publication date as an European format
+     *
+     * @return Array of 5post selected with title, post content and publication date
+     */
     public function getBillet($id){
     $db = $this -> init();
     
@@ -25,6 +43,11 @@ class PostManager extends Manager{
     return $billet;
     }
     
+    /**
+     * Determine number of pages to be displayed. Each page has 5 posts published, whatever their content
+     * 
+     * @return Integer of number of pages displayed for all posts.
+     */
     public function getNbPages(){
         $db = $this -> init();
     

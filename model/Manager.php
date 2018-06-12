@@ -2,14 +2,14 @@
 namespace org\formation\php\model;
 
 /**
-* General configuration od database connection for execution SQL requests
+* General configuration of database connection for execution SQL requests
 *
-*@author
+*@author JM. Hiltbrunner
 */
 
 class Manager{
     
-    /*
+    /**
     *Realizing connection to mySQL database 'miniblog' with dedicated user and password
     *Do not forget to update 'root' and '' if these data are false!
     */

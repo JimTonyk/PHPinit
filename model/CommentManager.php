@@ -8,7 +8,8 @@ class CommentManager extends Manager{
     /**
     * This function allow server to pick-out all comments to one article from database
     *
-    *@param id reference of article_id in database 'coments'
+    *@param $id reference of article_id in database 'coments'
+    *@return Array of all comments for post selected 
     */
     public function getComments($id){
         $db = $this -> init();
@@ -19,10 +20,16 @@ class CommentManager extends Manager{
         return $comments;
     }
     
+    /**
+     * This function allow selection of one comment if a modification is required
+     * 
+     * @param $idComment reference of comment (i.e. row 'id_com') in database 'comments'
+     * @return array of selected comment with its author, comment, and publication date
+     */
     public function getComment($idComment){
         $db = $this -> init();
         
-        $request = $db -> prepare('SELECT author, comment FROM comments WHERE id_com = ?') or die(print_r($db->errorInfo()));
+        $request = $db -> prepare('SELECT author, comment, date_format(date_comment, \'%d/%m/%Y à %Hh%imin%ss\') as datecom FROM comments WHERE id_com = ?') or die(print_r($db->errorInfo()));
         $request -> execute(array($idComment));
         
         return $request;
@@ -52,7 +59,7 @@ class CommentManager extends Manager{
     *@param id reference of id (primary key) of comment in table 'comments'
     *@param comment comment written in the section 'comment' of form
     *
-    *@return comment added to database which can be used by controller and view pages
+    *@return comment updated to database which can be used by controller and view pages
     */
     public function updateComment($comment, $id){
         $db = $this -> init();
@@ -61,5 +68,7 @@ class CommentManager extends Manager{
         $updatedComment = $updateComment -> execute(array($comment, $id));
         return $updatedComment;
     }
+    
+    // TODO : erase comments (only in supervisor mode)
     
 }
